@@ -57,6 +57,11 @@ def predict():
             'message': str(e)
         }), 400
 
+# if __name__ == '__main__':
+#     # Run locally on port 5000
+#     app.run(debug=True, port=5004)
 if __name__ == '__main__':
-    # Run locally on port 5000
-    app.run(debug=True, port=5004)
+    import os
+    # Use the port Render gives us, or default to 5004 for local testing
+    port = int(os.environ.get("PORT", 5004))
+    app.run(host='0.0.0.0', port=port)
